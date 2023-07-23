@@ -1,0 +1,1 @@
+obj-y += libsample2.o

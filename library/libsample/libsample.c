@@ -1,0 +1,4 @@
+void libsmaple(void)
+{
+
+}
