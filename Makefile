@@ -4,31 +4,33 @@ export scriptdir	:= scripts
 O					?= build
 export builddir 	?= $(O)
 
-V					?=1
-ifeq ($(V),1)
+V					?=0
+ifeq ($(V),0)
 export Q 			:= @
 endif
+
+MAKEFLAGS 			+= --no-print-directory
 
 all: build
 
 phony += build
-build: library driver app
+build: library driver arch app
 
 phony += app
 app:
-	$(MAKE) -f $(scriptdir)/build.mk subdir=app
+	$(Q)$(MAKE) -f $(scriptdir)/build.mk subdir=app
 
 phony += arch
 arch:
-	$(MAKE) -f $(scriptdir)/build.mk subdir=arch
+	$(Q)$(MAKE) -f $(scriptdir)/build.mk subdir=arch
 
 phony += driver
 driver:
-	$(MAKE) -f $(scriptdir)/build.mk subdir=driver
+	$(Q)$(MAKE) -f $(scriptdir)/build.mk subdir=driver
 
 phony += library
 library:
-	$(MAKE) -f $(scriptdir)/build.mk subdir=library
+	$(Q)$(MAKE) -f $(scriptdir)/build.mk subdir=library
 
 phony += info
 info:
