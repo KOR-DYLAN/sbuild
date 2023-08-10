@@ -1,1 +1,1 @@
-obj-y = entry.o
+dir-y = qemu_virt

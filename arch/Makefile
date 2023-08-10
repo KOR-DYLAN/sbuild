@@ -1,2 +1,2 @@
-arch-n = aarch64
-arch-n = arm
+dir-y = aarch64
+dir-n = arm

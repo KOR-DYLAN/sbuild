@@ -29,13 +29,13 @@ $(foreach var,$(obj),$(shell echo "obj += $(var)" >> $(basedir)/tmp.txt))
 #   $(2) = subdir
 #   $(3) = basedir
 #   $(4) = objects
-#   $(5) = lds
+#   $(5) = linker_script
 #   $(6) = target
 # Sample:
 #	$(call make_target,file,subdir,basedir,objects,lds,target)
 #   
 define make_target
-$(Q)$(MAKE) -f $(1) subdir=$(2) basedir=$(3) objects=$(4) lds=$(5) target=$(6) shipped=$(shipped) sub-inc-y='$(sub-inc-y)' sub-asflags-y='$(sub-asflags-y)' sub-ppflags-y='$(sub-ppflags-y)' sub-ccflags-y='$(sub-ccflags-y)' sub-cxxflags-y='$(sub-cxxflags-y)' sub-arflags-y='$(sub-arflags-y)' sub-ldflags-y='$(sub-ldflags-y)'
+$(Q)$(MAKE) -f $(1) subdir=$(2) basedir=$(3) objects=$(4) linker_script=$(5) target=$(6) shipped=$(shipped) sub-inc-y='$(sub-inc-y)' sub-asflags-y='$(sub-asflags-y)' sub-ppflags-y='$(sub-ppflags-y)' sub-ccflags-y='$(sub-ccflags-y)' sub-cxxflags-y='$(sub-cxxflags-y)' sub-arflags-y='$(sub-arflags-y)' sub-ldflags-y='$(sub-ldflags-y)'
 endef
 
 all: $(recipe)

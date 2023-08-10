@@ -8,13 +8,13 @@ arflags := rcs
 
 all: $(target)
 
-$(builddir)/%.elf: $(obj) $(lds)
-ifeq ($(lds),)
+$(builddir)/%.elf: $(obj) $(linker_script)
+ifeq ($(linker_script),)
 	@printf "%-10s $@\n" "[LD]"
 	$(Q)$(CC) $(ldflags) -Wl,-Map=$(basename $@).map -o $@ $(obj)
 else
 	@printf "%-10s $@\n" "[LD]"
-	$(Q)$(CC) $(ldflags) -Wl,-Map=$(basename $@).map -Wl,--script,$(lds) -o $@ $(obj)
+	$(Q)$(CC) $(ldflags) -Wl,-Map=$(basename $@).map -Wl,--script,$(linker_script) -o $@ $(obj)
 	$(Q)$(CROSS_COMPILE)$(SZ) $@
 endif
 

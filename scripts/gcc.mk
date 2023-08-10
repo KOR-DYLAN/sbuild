@@ -1,6 +1,9 @@
 # ================================================================
 #                             COMMON
 # ================================================================
+ifneq ($(CONFIG_CROSS_COMPILE),)
+	CROSS_COMPILE := $(CONFIG_CROSS_COMPILE)
+endif
 AS		:= $(CROSS_COMPILE)gcc
 CPP		:= $(CROSS_COMPILE)gcc -E
 CC		:= $(CROSS_COMPILE)gcc
